@@ -1,24 +1,70 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url(./Assets/Inter-Regular.ttf) format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'MyFontBolder';
+    src: url(./Assets/Inter-Bold.ttf) format('truetype');
+    
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'MyFontMedium';
+    src: url(./Assets/Inter-Medium.ttf) format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'MyFontSemiBold';
+    src: url(./Assets/Inter-SemiBold.ttf) format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
 * {
     margin:  0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'MyFont';
 }
 
 .content {
     display: grid;
     align-items: center;
-    background-color: #f2f2f2;
     /*
+    background-color: #f2f2f2;
+    */
     background-image: url(./Assets/white-waves.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
-    */
+    position: relative;
+    padding-bottom: 30px;
 }
+
+/*
+.content::before {
+    position: absolute;
+    content: "";
+    background-image: url(./Assets/sun.svg);
+    height: 50rem;
+    width: 50rem;
+    right: 0;
+    top: 0;
+    opacity: 1;
+
+}
+*/
 
 .heading {
     display: flex;
+    font-family: 'MyFontBolder';
     align-items: center;
     padding: 20px;
     justify-items: start;
@@ -26,8 +72,8 @@
     gap: 15px;
     font-size: 2.2rem;
     padding-bottom: 0;
-    font-weight: bold;
-    padding-left: 4%;
+    padding-left: 2%;
+    font-family: 'MyFontBolder';
 
 }
 
@@ -40,10 +86,10 @@
     flex-direction: column;
     background-color: #FFF7B5;
     height: max-content;
-    width: 600px;
-    margin-left: 4%;
+    width: 800px;
+    margin-left: 7%;
     border-radius: 15px;
-    margin-top: 15px;
+    margin-top: 50px;
     margin-bottom: 15px;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
     
@@ -52,30 +98,27 @@
 }
 
 .morning {
-    margin-left: 10%;
+    margin-left: 7%;
     margin-top: 20px;
-    font-size: 2.6rem;
+    font-size: 70px;
     font-weight: bolder;
     position: relative;
+    font-family: 'MyFontSemiBold';
 }
 
-.morning::before {
-    position: absolute;
-    content: "";
-    height: 7px;
-    width: 7px;
-    background-color: #A92727;
-    bottom: 10px;
-    left: 372px;
-    border-radius: 50%;
+.dot {
+    color: #A92727;
+    margin-left: -15px;
 }
 
 .question {
-    margin-left: 10%;
-    margin-top: 10px;
+    margin-left: 7%;
+    margin-top: 20px;
     color: rgba(0,0,0,.22);
     font-weight: bolder;
-    font-size: 1.7rem;
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+    font-family: 'MyFontMedium';
 
 }
 
@@ -83,18 +126,23 @@
     display: flex;
     gap: 25px;
     padding: 20px;
+    padding-left: 0;
+    margin-left: 7%;
+    margin-bottom: 5%;
 }
 
 .day, .month {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: rgba(0,0,0,.22);
     font-weight: bolder;
+    font-family: 'MyFontMedium';
 }
 
 .number {
     font-size: 5rem;
     font-weight: bold;
     color: #A92727;
+    font-family: 'MyFontBolder';
 }
 
 .day {
@@ -129,7 +177,7 @@ svg {
 .line::before {
     position: absolute;
     top: 6px;
-    left: 115px;
+    left: 132px;
     content: '';
     height: 12px;
     width: 12px;
@@ -166,3 +214,263 @@ svg {
     cursor: pointer;
     fill: #f2f2f2;
 }   
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 351px));
+    gap: 9rem;
+    padding: 0 9rem;
+    justify-content: center;
+    margin-top: 40px;
+    
+}
+
+.projects > div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.project {
+    display: grid;
+    gap: 20px;
+    height: 510px;
+    width: 400px;
+}
+
+.title {
+    font-size: 40px;
+    font-family: 'MyFontSemiBold';
+}
+
+.item {
+    background-color: rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    height: 85px;
+}
+
+.left {
+    background-color: #5471D8;
+    width: 49px;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
+    margin-left: 27px;
+    position: relative;
+    padding-bottom: 12px;
+    
+    
+}
+
+
+.create {
+    margin-left: 50%;
+    height: 800px;
+    width: 450px;
+    background-color:#f2f2f2;
+    border-radius: 10px;
+}
+
+
+
+.firster {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    
+    color: white;
+    align-items: center;
+    
+
+    
+}
+
+.createtodo {
+    flex-basis: 70%; 
+    font-family: 'MyFontBolder';
+    
+    text-align: start;
+    width: 100%;
+    position: relative;
+}
+
+.createtodo::before {
+    content: "Create To Do";
+    font-size: 1rem;
+    position: absolute;
+    color: black;
+    top: 50%;
+    left: 100px;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    color: white;
+}
+
+.cancel {
+    
+}
+
+.send {
+    font-family: 'MyFontSemiBold';
+    background-color: white;
+    opacity: 0.8;
+    position: relative;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease ;
+
+}
+
+.send::before {
+    content: "Create";
+    position: absolute;
+    color:#A92727;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.send:hover {
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.5);
+}
+
+
+.todo {
+    font-size: 18px;
+    font-family: 'MyFontMedium';
+}
+
+.description {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.67);
+}
+
+.due {
+    position: absolute;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.67);
+    right: -150px;
+    font-family: 'MyFontMedium';
+}
+
+.num {
+    color: #A92727;
+    font-family: 'MyFontBolder';
+}
+
+.click {
+    width: 28px;
+    height: 30px;
+    background-color: white;
+    opacity: 0.6;
+}
+
+.top {
+    background-color: #a92727cb;
+    height: 40%;
+    width: 100%;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.addtitle {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    color: white;
+    font-family: 'MyFontBolder';
+    
+}
+
+
+
+.titletext {
+    font-family: 'MyFontMedium';
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    opacity: 0.4;
+    margin-top: 3px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 7px 13px;
+    line-height: 1.9;
+    font-size: 0.85rem;
+    
+    
+    
+}
+
+
+.titletext::placeholder {
+    color: black;
+}
+
+
+.addDescription {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    color: white;
+    font-family: 'MyFontBolder';
+}
+
+.descriptiontext {
+    font-family: 'MyFontMedium';
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    opacity: 0.4;
+    margin-top: 3px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 7px 13px;
+    line-height: 1.9;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.descriptiontext::placeholder {
+    color: black;
+}
+
+.bottom {
+    font-family: 'MyFontBolder';
+    padding: 25px;
+}
+
+.difficulty {
+    display: flex;
+    flex-direction: column;
+    font-family: 'MyFontSemiBold';
+    
+}
+
+.duedate {
+    display: flex;
+    flex-direction: column;
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+}
+
+option {
+    outline: none;
+}
+
+
