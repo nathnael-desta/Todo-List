@@ -325,9 +325,10 @@ svg {
     width: 100px;
     height: 30px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
     cursor: pointer;
     transition: box-shadow 0.3s ease ;
+    transition: opacity 0.3s ease ;
 
 }
 
@@ -342,7 +343,8 @@ svg {
 }
 
 .send:hover {
-    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 9px 0 rgba(26,24,29,.12);
+    opacity: 0.7;
 }
 
 
@@ -450,6 +452,8 @@ svg {
 .bottom {
     font-family: 'MyFontBolder';
     padding: 25px;
+    display: flex;
+    flex-direction: column;
 }
 
 .difficulty {
@@ -473,4 +477,164 @@ option {
     outline: none;
 }
 
+.front {
+    background-color: white;
+    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    border-radius: 4px;
+    height: 30px;
+    padding: 2px 15px;
+    position: relative;
+    transition: color 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
+    position: relative;
+    
+}
 
+.front:hover .mode{
+    color: #A92727;
+}
+
+.front:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 3px 2px rgba(26,24,29,.12);
+}
+
+.front:active {
+    outline: 1px #A92727 solid;
+}
+
+
+.l1 {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 58px;
+}
+
+.l2 {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 73px;
+}
+
+.drop {
+    position: absolute;
+    width: 25px;
+    height: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 10px;
+    fill: black;
+}
+
+.dropdown{
+    background-color:white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: min-content;
+    border-radius: 4px;
+    top: 32px;
+    padding: 7px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    display: none;
+    
+    
+}
+
+.choose {
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.choose::before {
+    transition: background-color 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.choose:hover::before {
+    content: '';
+    position: absolute;
+    background-color: #A92727;
+    opacity: 0.1;
+    top: -7px;
+    bottom: -7px;
+    left: -15px;
+    right: -15px;
+    border-radius: 4px;
+}
+
+.choose:hover {
+    color: #A92727;
+}
+
+
+.choose svg {
+    transition: fill 0.3s ease;
+}
+
+.choose:hover svg {
+    fill: #A92727;
+}
+
+
+
+.r1 {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    fill: #878190;
+    right: 0px;
+
+}
+
+.r2 {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    fill: #878190;
+    right: 15px;
+}
+
+.r3 {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    fill: #878190;
+    right: 30px;
+}
+
+.r4 {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    fill: #878190;
+    right: 45px;
+}
+
+
+.show {
+    display: block;
+}
+
+
+
+.send2 {
+    margin-top: 200px;
+    justify-content: flex-end;
+}

@@ -2,13 +2,11 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-  entry: {
-    index: './src/index.js',
-    dycalendar: './src/dycalendar.min.js'},
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+    entry: './src/index.js',
+    output: {
+      filename: 'main.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
   devServer: {
     static: [
       path.resolve(__dirname, 'src'),
