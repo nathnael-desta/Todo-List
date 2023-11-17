@@ -295,7 +295,6 @@ svg {
 .createtodo {
     flex-basis: 70%; 
     font-family: 'MyFontBolder';
-    
     text-align: start;
     width: 100%;
     position: relative;
@@ -303,7 +302,7 @@ svg {
 
 .createtodo::before {
     content: "Create To Do";
-    font-size: 1rem;
+    font-size: 1.3rem;
     position: absolute;
     color: black;
     top: 50%;
@@ -460,6 +459,8 @@ svg {
     display: flex;
     flex-direction: column;
     font-family: 'MyFontSemiBold';
+    gap: 5px;
+    color: rgba(34, 32, 32, 0.897);
     
 }
 
@@ -486,7 +487,17 @@ option {
     position: relative;
     transition: color 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
     position: relative;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-bottom: 20px;
     
+}
+
+.mode {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .front:hover .mode{
@@ -498,27 +509,47 @@ option {
     box-shadow: 0px 2px 3px 2px rgba(26,24,29,.12);
 }
 
-.front:active {
+.outliner {
     outline: 1px #A92727 solid;
 }
 
+.hide {
+    display: none;
+}
 
 .l1 {
-    position: absolute;
+    
     width: 16px;
     height: auto;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 58px;
+    transform: translate(0, 10%);
+    margin-right: -5px;
+    
 }
 
 .l2 {
-    position: absolute;
+    
     width: 16px;
     height: auto;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 73px;
+    transform: translate(0, 10%);
+    margin-right: -5px;
+    
+}
+
+.l3 {
+    
+    width: 16px;
+    height: auto;
+    transform: translate(0, 10%);
+    margin-right: -5px;
+    
+}
+
+.l4 {
+    
+    width: 16px;
+    height: auto;
+    transform: translate(0, 10%);
+    
 }
 
 .drop {
@@ -542,7 +573,7 @@ option {
     padding: 7px 15px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
     display: none;
     
@@ -627,14 +658,147 @@ option {
     right: 45px;
 }
 
-
 .show {
-    display: block;
+    display: flex;
 }
-
-
 
 .send2 {
     margin-top: 200px;
     justify-content: flex-end;
 }
+
+.duedate {
+    display: flex;
+    flex-direction: column;
+    font-family: 'MyFontSemiBold';
+    gap: 5px;
+    color: rgba(34, 32, 32, 0.897);
+}
+
+.calendar-div {
+    height: 30px;
+    background-color: white;
+    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    border-radius: 4px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    outline: 1px #b0aabb solid;
+    cursor: pointer;
+    transition: outline 0.3s ease;
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.calendar-div:hover {
+    outline: 1px #96919e solid;
+    box-shadow: 0px 2px 5px 0 rgba(26,24,29,.12);
+}
+
+.enclosure {
+    width: 30px;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #e3dee9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-div svg {
+    height: 18px;
+    fill: #878190;
+}
+
+
+
+
+
+.wrapper{
+    width: 450px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  }
+  .wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+  }
+  header .icons{
+    display: flex;
+  }
+  header .icons span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+  }
+  .icons span:last-child{
+    margin-right: -10px;
+  }
+  header .icons span:hover{
+    background: #f2f2f2;
+  }
+  header .current-date{
+    font-size: 1.45rem;
+    font-weight: 500;
+  }
+  .calendar{
+    padding: 20px;
+  }
+  .calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+  }
+  .calendar .days{
+    margin-bottom: 20px;
+  }
+  .calendar li{
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+  }
+  .calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+  }
+  .calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+  }
+  .days li.inactive{
+    color: #aaa;
+  }
+  .days li.active{
+    color: #fff;
+  }
+  .days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .days li.active::before{
+    background: #9B59B6;
+  }
+  .days li:not(.active):hover::before{
+    background: #f2f2f2;
+  }
