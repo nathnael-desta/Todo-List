@@ -278,10 +278,11 @@ svg {
 
 .create {
     margin-left: 50%;
-    height: 800px;
+    height: 620px;
     width: 450px;
     background-color:#f2f2f2;
     border-radius: 10px;
+    position: relative;
 }
 
 
@@ -385,7 +386,7 @@ svg {
 
 .top {
     background-color: #a92727cb;
-    height: 40%;
+    height: 48%;
     width: 100%;
     border-radius: 10px;
     padding: 25px;
@@ -459,6 +460,7 @@ svg {
     padding: 25px;
     display: flex;
     flex-direction: column;
+    
 }
 
 .difficulty {
@@ -902,6 +904,7 @@ option {
     flex-direction: column;
     gap: 15px;
     box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    z-index: 1;
     
 }
 
@@ -1023,3 +1026,41 @@ option {
     font-family: 'MyFontMedium';
 
 }
+
+.container {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+
+.special{
+    width: 2px;
+    height: auto;
+    fill: #0000006e;
+    transition: fill 0.3s ease;
+}
+
+.special:hover{
+    fill: #A92727;
+}
+
+.send2 {
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+    transform: translate(0, -50%);
+}
+
+
+.outlinerS::before {
+    position: absolute;
+    content: "";
+    left: -15px;
+    right: -15px;
+    top: -1px;
+    bottom: -2px;
+    outline: 1px #A92727 solid;
+    border-radius: 4px;
+}
+

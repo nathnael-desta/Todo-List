@@ -25,6 +25,9 @@ const set2 = document.querySelector('.set2');
 const front2 = document.querySelector('front2');
 let visible = 0;
 const tagInput = document.querySelector('.tagInput');
+const dropdown2 = document.querySelector('.dropdown2');
+const container = document.querySelector('.container')
+const add = document.querySelector('.add');
 
 
 front.addEventListener('click', toggleDropdown);
@@ -105,6 +108,9 @@ const renderCalendar = () => {
     daysTag.innerHTML = liTag;
 
 
+
+
+
     
 let list = document.querySelectorAll('li');
 list.forEach(li => {
@@ -145,6 +151,13 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         renderCalendar(); // calling renderCalendar function
     });
 });
+
+
+
+container.addEventListener('click', () => {
+    dropdown2.classList.toggle('hide');
+    container.classList.toggle('outlinerS');
+})
 
 
 
@@ -233,6 +246,12 @@ choose2.forEach(item => {
         let svgElement = document.createElement('img');
         svgElement.src = './Assets/x.svg';
         console.log(svgElement)
+        svgElement.classList.add('special')
+        svgElement.style.width = "13px";
+        svgElement.style.height = "auto";
+        svgElement.style.fill = "red";
+
+
 
         newDiv.appendChild(svgElement);
         parentDiv.appendChild(newDiv);
@@ -243,6 +262,7 @@ choose2.forEach(item => {
   })
   
   
+
   setInterval(() => {
     let computedHeight = getComputedStyle(mode2).height;
   
@@ -257,3 +277,4 @@ choose2.forEach(item => {
   
   })
 }, 500);
+
