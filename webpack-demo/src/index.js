@@ -1,5 +1,5 @@
 import './style.css';
-
+document.addEventListener('DOMContentLoaded', () => {
 const front = document.querySelector(".front");
 const dropdown = document.querySelector('.dropdown');
 const set = document.querySelector('.set');
@@ -8,7 +8,23 @@ const l1 = document.querySelector('.l1');
 const l2 = document.querySelector('.l2');
 const l3 = document.querySelector('.l3');
 const l4 = document.querySelector('.l4');
-
+const shown = document.querySelector('.shown');
+const wrapper = document.querySelector('.wrapper');
+const calendarDiv = document.querySelector('.calendarDiv');
+const work = document.querySelector('.work');
+const excersise = document.querySelector('.excersie');
+const health = document.querySelector('.health');
+const teams = document.querySelector('.teams');
+const chores = document.querySelector('.chores');
+const school = document.querySelector('.school');
+const creativity = document.querySelector('.creativity');
+const inside = document.querySelectorAll('.inside');
+const choose2 = document.querySelectorAll('.choose2');
+const mode2 = document.querySelector('.mode2');
+const set2 = document.querySelector('.set2');
+const front2 = document.querySelector('front2');
+let visible = 0;
+const tagInput = document.querySelector('.tagInput');
 
 
 front.addEventListener('click', toggleDropdown);
@@ -51,9 +67,9 @@ function replacer() {
    
 }
 
-
-
-
+let day = 0;
+let month = 0;
+let year = 0;
 
 
 const daysTag = document.querySelector(".days"),
@@ -67,6 +83,7 @@ currMonth = date.getMonth();
 const months = ["January", "February", "March", "April", "May", "June", "July",
               "August", "September", "October", "November", "December"];
 const renderCalendar = () => {
+    wrapper.classList.toggle('hide');
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
     lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
     lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
@@ -86,8 +103,33 @@ const renderCalendar = () => {
     }
     currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
     daysTag.innerHTML = liTag;
+
+
+    
+let list = document.querySelectorAll('li');
+list.forEach(li => {
+    li.addEventListener('click', () => {
+        
+        day = li.textContent;
+
+        let picked = currentDate.textContent.split(' ')
+
+        month = picked[0];
+        year = picked[1];
+
+        renderCalendar();
+
+        shown.innerHTML = `${day} ${month} ${year}`;
+        wrapper.classList.toggle('hide');
+
+
+    })
+})
+
 }
-renderCalendar();
+
+calendarDiv.addEventListener('click', renderCalendar);
+
 prevNextIcon.forEach(icon => { // getting prev and next icons
     icon.addEventListener("click", () => { // adding click event on both icons
         // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
@@ -103,3 +145,115 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         renderCalendar(); // calling renderCalendar function
     });
 });
+
+
+
+choose2.forEach(item => {
+    item.addEventListener('click', () => {
+        //console.log(item.childNodes[1].textContent)
+        //console.log(inside)
+        inside.forEach(tag => {
+            //console.log(tag.childNodes[0].textContent)
+            let word = item.childNodes[1].textContent
+            let insert = tag.childNodes[0].textContent
+            
+            console.log(tag.childNodes[0].classList.contains('hide'))
+            
+
+            if (word == insert) {
+                tag.classList.toggle('hide');
+                set2.classList.add('hide');
+                
+            }
+
+            
+            
+            /*
+            if (item.childNode[1].classList.contains('hide')){
+                visible--
+            } else {
+                visible++
+            }
+            */
+        })
+    });
+    
+  })
+
+  inside.forEach(tag => {
+    tag.childNodes[2].addEventListener('click', () => {
+        tag.parentNode.classList.toggle('hide');
+        
+        if(tag.classList.contains("hide")) {
+            visible--
+        } else {
+            visible++
+        }
+        console.log(visible);
+
+    })
+    
+  })
+  
+  /*
+  function checkNone() {
+    visible = 0;
+    for(let i =0; i < mode2.childNodes.length; i++) {
+        let childNode = mode2.childNodes[i];
+        let displayValue = 'none';
+        if (childNode.nodeName != "#text") {
+        displayValue = window.getComputedStyle(childNode).getPropertyValue('display');
+        console.log(`${childNode}  ${displayValue}`)
+
+        }
+
+        if (displayValue !== 'none') {
+            visible++;
+        }
+    }
+    
+  }
+  */
+
+  console.log(tagInput)
+  tagInput.addEventListener('keydown', function (event) {
+
+    if (event.keyCode === 13) {
+        console.log("working")
+        let newDiv = document.createElement('div');
+
+        newDiv.classList.add('inside2');
+        newDiv.textContent = tagInput.value;
+        tagInput.value = "";
+
+
+        let parentDiv = document.createElement('div');
+        parentDiv.classList.add('inside');
+        
+        let svgElement = document.createElement('img');
+        svgElement.src = './Assets/x.svg';
+        console.log(svgElement)
+
+        newDiv.appendChild(svgElement);
+        parentDiv.appendChild(newDiv);
+
+        mode2.appendChild(parentDiv);
+
+    }
+  })
+  
+  
+  setInterval(() => {
+    let computedHeight = getComputedStyle(mode2).height;
+  
+  let parts = computedHeight.split(/(\d+)/)
+  let final = parseInt(parts[1]) + 6;
+  final += parts[2];
+  document.documentElement.style.setProperty('--div-a-height', final)
+
+
+  //console.log(visible)
+  
+  
+  })
+}, 500);
