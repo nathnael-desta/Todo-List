@@ -39,6 +39,10 @@
     font-family: 'MyFont';
 }
 
+body::-webkit-scrollbar{
+    display: none;
+}
+
 .content {
     display: grid;
     align-items: center;
@@ -279,7 +283,7 @@ svg {
 .create {
     margin-left: 50%;
     height: 700px;
-    width: 450px;
+    width: 500px;
     background-color:#f2f2f2;
     border-radius: 10px;
     position: relative;
@@ -320,7 +324,7 @@ svg {
 }
 
 .cancel {
-    
+    cursor: pointer;
 }
 
 .send {
