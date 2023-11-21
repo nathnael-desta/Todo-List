@@ -45,7 +45,7 @@
     /*
     background-color: #f2f2f2;
     */
-    background-image: url(./Assets/white-waves.png);
+    background-image: url(./Assets/colorful.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -278,7 +278,7 @@ svg {
 
 .create {
     margin-left: 50%;
-    height: 620px;
+    height: 700px;
     width: 450px;
     background-color:#f2f2f2;
     border-radius: 10px;
@@ -582,6 +582,7 @@ option {
     gap: 15px;
     box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
     display: none;
+    z-index: 1;
     
     
 }
@@ -1062,5 +1063,37 @@ option {
     bottom: -2px;
     outline: 1px #A92727 solid;
     border-radius: 4px;
+}
+
+
+.all {
+    position: relative;
+}
+
+.colored::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #a9272785;
+    z-index: 1;
+}
+
+.create {
+    position: absolute;
+    top: 20vh;
+    left: -10vw;
+    transform: translate(-10vh,-10vw);
+    transform: scale(0);
+    visibility: hidden;
+    z-index: 2;
+}
+
+.scaled {
+    transform: scale(1);
+    transition: transform 0.5s;
+    visibility: visible;
 }
 

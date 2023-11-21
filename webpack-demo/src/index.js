@@ -28,6 +28,27 @@ const tagInput = document.querySelector('.tagInput');
 const dropdown2 = document.querySelector('.dropdown2');
 const container = document.querySelector('.container')
 const add = document.querySelector('.add');
+const send = document.querySelector('.send');
+const cancel = document.querySelector('.cancel');
+const all = document.querySelector('.all');
+
+
+add.addEventListener('click', () => {
+    
+    let create = document.querySelector('.create');
+    create.classList.add("scaled");
+    all.classList.add('colored');
+})
+
+cancel.addEventListener('click', () => {
+    let create = document.querySelector('.create');
+    create.classList.add("scaled");
+})
+
+send.addEventListener('click', () => {
+    let create = document.querySelector('.create');
+    create.classList.add("scaled");
+})
 
 
 front.addEventListener('click', toggleDropdown);
@@ -56,7 +77,7 @@ function replacer() {
     l2.classList.remove('hide');
     l3.classList.add('hide');
     l4.classList.add('hide');
-   } else if (chosen.innerHTML == "Easy"){
+   } else if (chosen.innerHTML == "Medium"){
     l1.classList.remove('hide');
     l2.classList.remove('hide');
     l3.classList.remove('hide');
@@ -162,15 +183,19 @@ container.addEventListener('click', () => {
 
 
 choose2.forEach(item => {
+    
     item.addEventListener('click', () => {
-        //console.log(item.childNodes[1].textContent)
-        //console.log(inside)
+       
+        
+        
         inside.forEach(tag => {
-            //console.log(tag.childNodes[0].textContent)
-            let word = item.childNodes[1].textContent
-            let insert = tag.childNodes[0].textContent
             
-            console.log(tag.childNodes[0].classList.contains('hide'))
+            
+            let word = item.childNodes[1].textContent;
+            let insert = tag.childNodes[1].textContent;
+            
+            
+            
             
 
             if (word == insert) {
@@ -179,15 +204,6 @@ choose2.forEach(item => {
                 
             }
 
-            
-            
-            /*
-            if (item.childNode[1].classList.contains('hide')){
-                visible--
-            } else {
-                visible++
-            }
-            */
         })
     });
     
@@ -202,37 +218,19 @@ choose2.forEach(item => {
         } else {
             visible++
         }
-        console.log(visible);
+        
 
     })
     
   })
   
-  /*
-  function checkNone() {
-    visible = 0;
-    for(let i =0; i < mode2.childNodes.length; i++) {
-        let childNode = mode2.childNodes[i];
-        let displayValue = 'none';
-        if (childNode.nodeName != "#text") {
-        displayValue = window.getComputedStyle(childNode).getPropertyValue('display');
-        console.log(`${childNode}  ${displayValue}`)
+ 
 
-        }
-
-        if (displayValue !== 'none') {
-            visible++;
-        }
-    }
-    
-  }
-  */
-
-  console.log(tagInput)
+  
   tagInput.addEventListener('keydown', function (event) {
 
     if (event.keyCode === 13) {
-        console.log("working")
+        
         let newDiv = document.createElement('div');
 
         newDiv.classList.add('inside2');
@@ -245,7 +243,7 @@ choose2.forEach(item => {
         
         let svgElement = document.createElement('img');
         svgElement.src = './Assets/x.svg';
-        console.log(svgElement)
+        
         svgElement.classList.add('special')
         svgElement.style.width = "13px";
         svgElement.style.height = "auto";
@@ -272,9 +270,10 @@ choose2.forEach(item => {
   document.documentElement.style.setProperty('--div-a-height', final)
 
 
-  //console.log(visible)
+ 
   
   
   })
 }, 500);
 
+    
