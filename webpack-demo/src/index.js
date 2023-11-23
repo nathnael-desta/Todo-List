@@ -18,7 +18,7 @@ const teams = document.querySelector('.teams');
 const chores = document.querySelector('.chores');
 const school = document.querySelector('.school');
 const creativity = document.querySelector('.creativity');
-const inside = document.querySelectorAll('.inside');
+let inside = document.querySelectorAll('.inside');
 const choose2 = document.querySelectorAll('.choose2');
 const mode2 = document.querySelector('.mode2');
 const set2 = document.querySelector('.set2');
@@ -40,7 +40,7 @@ const descriptionText = document.querySelector('.descriptiontext');
 const set = document.querySelector('.set');
 const shown = document.querySelector('.shown');
 const inside2 = document.querySelectorAll('.inside2');
-
+let stop = 0;
 
 
 add.addEventListener('click', () => {
@@ -68,6 +68,17 @@ send2.addEventListener('click', () => {
     all.classList.remove('colored');
 })
 
+document.addEventListener('click', function (event) {
+    let target = event.target;
+
+    if (!(add.contains(target) || create.contains(target))) {
+        create.classList.remove('scaled');
+        all.classList.remove('colored');
+    }
+
+})
+
+
 front.addEventListener('click', toggleDropdown);
 
 choose.forEach(item => {
@@ -80,10 +91,10 @@ function toggleDropdown() {
     front.classList.toggle('outliner');
 }
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     let target = event.target;
 
-    if (!front.contains(target)){
+    if (!front.contains(target)) {
         dropdown.classList.remove('show');
         front.classList.remove('outliner');
     }
@@ -188,10 +199,10 @@ const renderCalendar = () => {
 
 calendarDiv.addEventListener('click', renderCalendar);
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     let target = event.target;
 
-    if (!calendarDiv.contains(target)){
+    if (!calendarDiv.contains(target)) {
         wrapper.classList.add('hide');
     }
 
@@ -220,10 +231,10 @@ container.addEventListener('click', () => {
     container.classList.toggle('outlinerS');
 })
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     let target = event.target;
 
-    if (!front2.contains(target)){
+    if (!front2.contains(target)) {
         dropdown2.classList.add('hide');
         container.classList.remove('outlinerS');
     }
@@ -250,19 +261,83 @@ choose2.forEach(item => {
 
             if (word == insert) {
                 tag.classList.toggle('hide');
-                set2.classList.add('hide');
+                if (tag.classList.contains('picker')){
+                    tag.classList.remove('picker');
+                    stop = 0;
+                }
+                //set2.classList.add('hide');
 
+            }
+
+        })
+
+        let count = 0;
+        inside.forEach(tag => {
+
+            if (!tag.classList.contains('hide')) {
+                count++;
+            }
+        })
+
+        if (count == 0) {
+            set2.classList.remove('hide');
+        } else {
+            set2.classList.add('hide');
+        }
+        
+
+        inside.forEach(tag => {
+            if (stop){}
+            else if (!tag.classList.contains('hide') && !tag.classList.contains('set2')) {
+                tag.classList.add('picker');
+                stop++;
             }
 
         })
     });
 
+
 })
+
+
+
 
 closeSvg.forEach(svg => {
     svg.addEventListener('click', () => {
         svg.parentElement.classList.toggle('hide');
+
+        if (svg.parentElement.classList.contains('picker')){
+            svg.parentElement.classList.remove('picker');
+            stop = 0;
+        }
+
+        inside.forEach(tag => {
+            if (stop){}
+            else if (!tag.classList.contains('hide') && !tag.classList.contains('set2')) {
+                tag.classList.add('picker');
+                stop++;
+            }
+
+        })
+
+        let count = 0;
+        inside.forEach(tag => {
+            if (!tag.classList.contains('hide')) {
+                count++;
+            }
+        })
+
+        
+
+        if (count == 0) {
+            set2.classList.remove('hide');
+        } else {
+            set2.classList.add('hide');
+        }
     })
+
+
+
 })
 
 inside.forEach(tag => {
@@ -290,7 +365,11 @@ tagInput.addEventListener('keydown', function (event) {
         let newDiv = document.createElement('div');
 
         newDiv.classList.add('inside2');
-        newDiv.textContent = tagInput.value;
+        newDiv.classList.add('made');
+
+        let insideText = document.createElement('div');
+        insideText.classList.add('inside2');
+        insideText.textContent = tagInput.value;
         tagInput.value = "";
 
 
@@ -306,13 +385,29 @@ tagInput.addEventListener('keydown', function (event) {
         svgElement.style.fill = "red";
 
 
-
+        newDiv.appendChild(insideText);
         newDiv.appendChild(svgElement);
+
         parentDiv.appendChild(newDiv);
 
         mode2.appendChild(parentDiv);
 
     }
+
+    let inside = document.querySelectorAll('.inside');
+    console.log(inside)
+    let count = 0;
+        inside.forEach(tag => {
+            if (!tag.classList.contains('hide')) {
+                count++;
+            }
+        })
+
+        if (count == 0) {
+            set2.classList.remove('hide');
+        } else {
+            set2.classList.add('hide');
+        }
 })
 
 
@@ -334,12 +429,6 @@ setInterval(() => {
 
 
 // actual storage and usage of inserted values
-
-
-
-send.addEventListener('click',addTask);
-
-
 
 const getTitle = () => {
     return {
@@ -369,27 +458,33 @@ const getDate = () => {
 }
 
 const getTags = () => {
+    let main = [];
     let tags = [];
     inside.forEach(item => {
+        if (item.classList.contains('picker')){
+            main.push(item.childNodes[1].textContent)
+        }
         if (!item.classList.contains('hide')) {
             tags.push(item.childNodes[1].textContent);
         }
     });
     return {
-        tags 
+        tags,
+        main
     }
 
 }
 
+const allTasks = [];
+
+send.addEventListener('click', addTask);
+
 function addTask() {
     let newTask = task();
-    console.log(newTask);
-    
-    
-    
-    
-    
+    allTasks.push(newTask);
+    console.log(newTask)
 }
+
 
 const task = () => {
     return Object.assign(
@@ -402,3 +497,16 @@ const task = () => {
     )
 }
 
+let counter = 0;
+
+const makeProject = () => {
+    let project = document.createElement('div');
+    let className = `p${counter}`;
+    counter++;
+    project.classList.add(className);
+
+    let title = document.createElement('div');
+
+    console.log(project)
+}
+makeProject()

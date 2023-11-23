@@ -43,6 +43,10 @@ body::-webkit-scrollbar{
     display: none;
 }
 
+body {
+    width: min-content;
+}
+
 .content {
     display: grid;
     align-items: center;
@@ -56,6 +60,12 @@ body::-webkit-scrollbar{
     min-height: 100vh;
     position: relative;
     padding-bottom: 30px;
+    width: 100%;
+}
+
+.all {
+    width: 100%;
+    
 }
 
 /*
@@ -94,7 +104,7 @@ body::-webkit-scrollbar{
 .greeting {
     display: flex;
     flex-direction: column;
-    background-color: #FFF7B5;
+    background-color: #fff8b5ec;
     height: max-content;
     width: 800px;
     margin-left: 7%;
@@ -197,6 +207,7 @@ svg {
 
 .add {
     padding: 15px;
+    
     border: #A92727 2px solid;
     height: max-content;
     border-radius: 50%;
@@ -222,7 +233,7 @@ svg {
 
 .add:hover svg {
     cursor: pointer;
-    fill: #f2f2f2;
+    fill: #F1ECDD;
 }   
 
 .projects {
@@ -236,7 +247,7 @@ svg {
 }
 
 .projects > div {
-    background-color: white;
+    background-color: #a927273a;
     padding: 20px;
     border-radius: 20px;
 }
@@ -269,6 +280,30 @@ svg {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+.centerButton {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    opacity: 0.4;
+    cursor: pointer;
+    
+    
+}
+
+.centerButton svg {
+    width: 28px;
+    height: auto;
+    
+    visibility: hidden;
+    
+}
+
+.centerButton:hover svg {
+    visibility: visible;
+    
 }
 
 .right {
@@ -1042,12 +1077,16 @@ option {
 .special{
     width: 2px;
     height: auto;
-    fill: #0000006e;
+    fill: rgba(0, 0, 0, 0.432);
     transition: fill 0.3s ease;
 }
 
 .special:hover{
     fill: #A92727;
+}
+
+.insideText {
+    margin-right: 10px;
 }
 
 .send2 {
@@ -1101,3 +1140,10 @@ option {
     visibility: visible;
 }
 
+.picker {
+    outline: 2px solid #A92727;
+}
+
+@media screen  {
+    
+}
