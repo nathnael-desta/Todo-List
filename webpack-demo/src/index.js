@@ -41,7 +41,9 @@ const set = document.querySelector('.set');
 const shown = document.querySelector('.shown');
 const inside2 = document.querySelectorAll('.inside2');
 let stop = 0;
-
+const projects = document.querySelector('.projects');
+const left = document.querySelector('.left');
+const centerButton = document.querySelectorAll('.centerButton');
 
 add.addEventListener('click', () => {
 
@@ -225,21 +227,66 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
 });
 
 
+// actual storage and usage of inserted values
 
-container.addEventListener('click', () => {
-    dropdown2.classList.toggle('hide');
-    container.classList.toggle('outlinerS');
-})
+const getTitle = () => {
+    let thisTitle = titleText.value;
+    return {
+        title: thisTitle
+    }
+}
 
-document.addEventListener('click', function (event) {
-    let target = event.target;
+const getDescription = () => {
+    let thisDescription = descriptionText.value;
+    return {
+        description: thisDescription
+    }
+}
 
-    if (!front2.contains(target)) {
-        dropdown2.classList.add('hide');
-        container.classList.remove('outlinerS');
+const getDifficulty = () => {
+    let difficult = set.textContent;
+    if (difficult == "Trivial") {
+        left.style.backgroundColor = 'yellow'
+
+    }
+    return {
+        difficult
+    }
+}
+
+const getDate = () => {
+    let [day, month, year] = shown.textContent.split(' ');
+    return {
+        day,
+        month,
+        year
+    }
+}
+
+const getTags = () => {
+    let main = [];
+    let tags = [];
+    inside.forEach(item => {
+        if (item.classList.contains('picker')){
+            main.push(item.childNodes[1].textContent)
+        }
+        if (!item.classList.contains('hide')) {
+            tags.push(item.childNodes[1].textContent);
+        }
+    });
+    if (main.length == 0) {
+        main = ['General'];
+    }
+    return {
+        tags,
+        main
     }
 
-})
+}
+
+
+
+
 
 
 
@@ -428,63 +475,56 @@ setInterval(() => {
 
 
 
-// actual storage and usage of inserted values
 
-const getTitle = () => {
-    return {
-        title: titleText.value
-    }
-}
 
-const getDescription = () => {
-    return {
-        description: descriptionText.value
-    }
-}
+const allProjects = [];
 
-const getDifficulty = () => {
-    return {
-        difficulty: set.textContent
-    }
-}
-
-const getDate = () => {
-    let [day, month, year] = shown.textContent.split(' ');
-    return {
-        day,
-        month,
-        year
-    }
-}
-
-const getTags = () => {
-    let main = [];
-    let tags = [];
-    inside.forEach(item => {
-        if (item.classList.contains('picker')){
-            main.push(item.childNodes[1].textContent)
-        }
-        if (!item.classList.contains('hide')) {
-            tags.push(item.childNodes[1].textContent);
-        }
-    });
-    return {
-        tags,
-        main
-    }
-
-}
-
-const allTasks = [];
 
 send.addEventListener('click', addTask);
+send2.addEventListener('click', addTask);
+
+let requiredEmpty = true;
 
 function addTask() {
     let newTask = task();
-    allTasks.push(newTask);
+
     console.log(newTask)
+    if (checkIfMade(allProjects, newTask.main)) {
+        allProjects[parseInt(checkIfMade(allProjects, newTask.main))].appendChild(makeDetails(newTask));
+    } else {
+        allProjects.push(makeProject(newTask));
+    }
+
+    projectRender();
+
+    
 }
 
+container.addEventListener('click', () => {
+    dropdown2.classList.toggle('hide');
+    container.classList.toggle('outlinerS');
+})
+
+document.addEventListener('click', function (event) {
+    let target = event.target;
+
+    requiredEmpty = getTitle().title == "";
+    
+
+    if (!front2.contains(target) && !requiredEmpty) {
+    console.log(requiredEmpty)
+        dropdown2.classList.add('hide');
+        container.classList.remove('outlinerS');
+    }
+
+})
+
+
+function projectRender() {
+    for (let index = 0; index < allProjects.length; index++) {
+        projects.appendChild(allProjects[index]);
+    }
+}
 
 const task = () => {
     return Object.assign(
@@ -499,14 +539,134 @@ const task = () => {
 
 let counter = 0;
 
-const makeProject = () => {
+const makeProject = (task) => {
     let project = document.createElement('div');
+    project.classList.add('project')
     let className = `p${counter}`;
     counter++;
     project.classList.add(className);
 
     let title = document.createElement('div');
+    title.classList.add('title');
+    title.textContent = task.main[0];
+    project.appendChild(title);
 
-    console.log(project)
+    let item = document.createElement('div');
+    item.classList.add('item');
+    project.appendChild(item);
+
+    let left = document.createElement('div');
+    left.classList.add('left');
+    item.appendChild(left);
+
+    let right = document.createElement('div');
+    right.classList.add('right');
+    item.appendChild(right);
+    
+    let centerButton = document.createElement('div');
+    centerButton.classList.add('centerButton');
+    left.appendChild(centerButton);
+
+    // add SVG shit here
+
+    let todo = document.createElement('div');
+    todo.classList.add('todo');
+    todo.textContent = task.title;
+    right.appendChild(todo);
+
+    let description = document.createElement('div');
+    description.classList.add('description');
+    description.textContent = task.description;
+    right.appendChild(description);
+
+    let due = document.createElement('div');
+    due.classList.add('due');
+    due.textContent = `${task.month} `;
+
+    let num = document.createElement('span');
+    num.classList.add('num');
+    num.textContent = task.day;
+    due.appendChild(num);
+    right.appendChild(due);
+
+    return project;
 }
-makeProject()
+
+
+
+const makeDetails = (task) => {
+
+    let item = document.createElement('div');
+    item.classList.add('item');
+
+    let left = document.createElement('div');
+    left.classList.add('left');
+    item.appendChild(left);
+
+    let right = document.createElement('div');
+    right.classList.add('right');
+    item.appendChild(right);
+    
+    let centerButton = document.createElement('div');
+    centerButton.classList.add('centerButton');
+    left.appendChild(centerButton);
+
+    // add SVG shit here
+
+    let todo = document.createElement('div');
+    todo.classList.add('todo');
+    todo.textContent = task.title;
+    right.appendChild(todo);
+
+    let description = document.createElement('div');
+    description.classList.add('description');
+    description.textContent = task.description;
+    right.appendChild(description);
+
+    let due = document.createElement('div');
+    due.classList.add('due');
+    due.textContent = `${task.month} `;
+
+    let num = document.createElement('span');
+    num.classList.add('num');
+    num.textContent = task.day;
+    due.appendChild(num);
+    right.appendChild(due);
+
+    return item;
+
+}
+
+function checkIfMade(projects, projectName) {
+    for (let index = 0; index < projects.length; index++) {
+        if (projects[index].childNodes[0].textContent == projectName) {
+            return index + "";
+        }
+    }
+    return false;
+}
+
+/*
+let left = document.createElement('div');
+    left.classList.add('left');
+
+    let right = document.createElement('div');
+    right.classList.add('right');
+
+    let centerButton = document.createElement('div');
+    centerButton.classList.add('centerButton');
+
+    let svgElement = document.createElement('img');
+    svgElement.src = './Assets/check-bold.svg';
+
+    let todo = document.createElement('div');
+    todo.classList.add('todo');
+*/
+
+const closeTask = function closeTaskInsideOfProjectAndProjectIfEmpty() {
+    console.log(this.parentNode.parentNode);
+}
+
+centerButton.forEach(item => {
+    item.addEventListener('click', closeTask);
+})

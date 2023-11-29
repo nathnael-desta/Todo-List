@@ -44,7 +44,7 @@ body::-webkit-scrollbar{
 }
 
 body {
-    width: min-content;
+    width: 100%;
 }
 
 .content {
@@ -104,7 +104,7 @@ body {
 .greeting {
     display: flex;
     flex-direction: column;
-    background-color: #fff8b5ec;
+    background-color: rgba(255, 255, 255, 0.315);
     height: max-content;
     width: 800px;
     margin-left: 7%;
@@ -244,10 +244,12 @@ svg {
     justify-content: center;
     margin-top: 40px;
     
+    
 }
 
 .projects > div {
-    background-color: #a927273a;
+    /*background-color: #a927273a;*/
+    background-color: rgba(255, 255, 255, 0.404);
     padding: 20px;
     border-radius: 20px;
 }
@@ -255,8 +257,16 @@ svg {
 .project {
     display: grid;
     gap: 20px;
-    height: 510px;
+    height: 570px;
     width: 400px;
+    align-items:self-start;
+    align-content: start;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+
+.project::-webkit-scrollbar{
+    display: none;
 }
 
 .title {
@@ -270,6 +280,8 @@ svg {
     display: flex;
     align-items: center;
     height: 85px;
+    position: relative;
+    width: 100%;
 }
 
 .left {
@@ -310,6 +322,7 @@ svg {
     margin-left: 27px;
     position: relative;
     padding-bottom: 12px;
+    width: 100%;
     
     
 }
@@ -407,7 +420,7 @@ svg {
     position: absolute;
     font-size: 15px;
     color: rgba(0, 0, 0, 0.67);
-    right: -150px;
+    right: 20px;
     font-family: 'MyFontMedium';
 }
 
@@ -1144,6 +1157,8 @@ option {
     outline: 2px solid #A92727;
 }
 
-@media screen  {
-    
+@media (max-width: 934px){
+    body {
+        width: min-content;
+    }
 }
