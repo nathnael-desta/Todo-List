@@ -3,29 +3,29 @@
     src: url(./Assets/Inter-Regular.ttf) format('truetype');
     font-weight: 600;
     font-style: normal;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'MyFontBolder';
     src: url(./Assets/Inter-Bold.ttf) format('truetype');
-    
-    font-style: normal;
-  }
 
-  @font-face {
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'MyFontMedium';
     src: url(./Assets/Inter-Medium.ttf) format('truetype');
     font-weight: 800;
     font-style: normal;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'MyFontSemiBold';
     src: url(./Assets/Inter-SemiBold.ttf) format('truetype');
     font-weight: 800;
     font-style: normal;
-  }
-  
+}
+
 
 :root {
     --div-a-height: 0;
@@ -33,13 +33,13 @@
 }
 
 * {
-    margin:  0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'MyFont';
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
     display: none;
 }
 
@@ -65,7 +65,7 @@ body {
 
 .all {
     width: 100%;
-    
+
 }
 
 /*
@@ -112,7 +112,7 @@ body {
     margin-top: 50px;
     margin-bottom: 15px;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-    
+
 
 
 }
@@ -126,6 +126,10 @@ body {
     font-family: 'MyFontSemiBold';
 }
 
+.daySection {
+    font-size: 7rem;
+}
+
 .dot {
     color: #A92727;
     margin-left: -15px;
@@ -134,7 +138,7 @@ body {
 .question {
     margin-left: 7%;
     margin-top: 20px;
-    color: rgba(0,0,0,.22);
+    color: rgba(0, 0, 0, .22);
     font-weight: bolder;
     font-size: 2.3rem;
     margin-bottom: 20px;
@@ -151,11 +155,13 @@ body {
     margin-bottom: 5%;
 }
 
-.day, .month {
+.day,
+.month {
     font-size: 2.5rem;
-    color: rgba(0,0,0,.22);
+    color: rgba(0, 0, 0, .22);
     font-weight: bolder;
     font-family: 'MyFontMedium';
+    text-align: center;
 }
 
 .number {
@@ -163,12 +169,13 @@ body {
     font-weight: bold;
     color: #A92727;
     font-family: 'MyFontBolder';
+    text-align: center;
 }
 
 .day {
     margin-bottom: -20px;
     text-align: center;
-    
+
 }
 
 .month {
@@ -207,7 +214,7 @@ svg {
 
 .add {
     padding: 15px;
-    
+
     border: #A92727 2px solid;
     height: max-content;
     border-radius: 50%;
@@ -228,13 +235,13 @@ svg {
 .add:hover {
     background-color: #A92727;
     cursor: pointer;
-    
+
 }
 
 .add:hover svg {
     cursor: pointer;
     fill: #F1ECDD;
-}   
+}
 
 .projects {
     display: grid;
@@ -243,11 +250,11 @@ svg {
     padding: 0 9rem;
     justify-content: center;
     margin-top: 40px;
-    
-    
+
+
 }
 
-.projects > div {
+.projects>div {
     /*background-color: #a927273a;*/
     background-color: rgba(255, 255, 255, 0.404);
     padding: 20px;
@@ -259,13 +266,13 @@ svg {
     gap: 20px;
     height: 570px;
     width: 400px;
-    align-items:self-start;
+    align-items: self-start;
     align-content: start;
     overflow: auto;
     padding-bottom: 20px;
 }
 
-.project::-webkit-scrollbar{
+.project::-webkit-scrollbar {
     display: none;
 }
 
@@ -287,20 +294,20 @@ svg {
 }
 
 .left {
-    
+
     background-color: #6ad854;
-    
+
     background-color: #d85454;
     background-color: #5471D8;
-    background-color: #fcf159;
-    
+    background-color: #fcb059;
+
     width: 49px;
     height: 100%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .centerButton {
@@ -310,20 +317,20 @@ svg {
     opacity: 0.4;
     cursor: pointer;
     position: relative;
-    
+
 }
 
 .centerButton svg {
     width: 28px;
     height: auto;
-    
+
     visibility: hidden;
-    
+
 }
 
 .centerButton:hover svg {
     visibility: visible;
-    
+
 }
 
 .item .visibleSvg {
@@ -335,8 +342,8 @@ svg {
     position: relative;
     padding-bottom: 12px;
     width: 293px;
-    
-    
+
+
 }
 
 
@@ -344,7 +351,7 @@ svg {
     margin-left: 50%;
     height: 700px;
     width: 500px;
-    background-color:#f2f2f2;
+    background-color: #f2f2f2;
     border-radius: 10px;
     position: relative;
 }
@@ -355,16 +362,16 @@ svg {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    
+
     color: white;
     align-items: center;
-    
 
-    
+
+
 }
 
 .createtodo {
-    flex-basis: 70%; 
+    flex-basis: 70%;
     font-family: 'MyFontBolder';
     text-align: start;
     width: 100%;
@@ -395,17 +402,17 @@ svg {
     width: 100px;
     height: 30px;
     border-radius: 5px;
-    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 0 rgba(26, 24, 29, .12);
     cursor: pointer;
-    transition: box-shadow 0.3s ease ;
-    transition: opacity 0.3s ease ;
+    transition: box-shadow 0.3s ease;
+    transition: opacity 0.3s ease;
 
 }
 
 .send::before {
     content: "Create";
     position: absolute;
-    color:#A92727;
+    color: #A92727;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -413,7 +420,7 @@ svg {
 }
 
 .send:hover {
-    box-shadow: 0px 5px 9px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 5px 9px 0 rgba(26, 24, 29, .12);
     opacity: 0.7;
 }
 
@@ -465,7 +472,7 @@ svg {
     padding-top: 20px;
     color: white;
     font-family: 'MyFontBolder';
-    
+
 }
 
 
@@ -483,9 +490,9 @@ svg {
     padding: 7px 13px;
     line-height: 1.9;
     font-size: 0.85rem;
-    
-    
-    
+
+
+
 }
 
 
@@ -527,7 +534,7 @@ svg {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .difficulty {
@@ -536,7 +543,7 @@ svg {
     font-family: 'MyFontSemiBold';
     gap: 5px;
     color: rgba(34, 32, 32, 0.897);
-    
+
 }
 
 .duedate {
@@ -555,7 +562,7 @@ option {
 
 .front {
     background-color: white;
-    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 0 rgba(26, 24, 29, .12);
     border-radius: 4px;
     height: 30px;
     padding: 2px 15px;
@@ -566,7 +573,7 @@ option {
     align-items: center;
     color: black;
     margin-bottom: 20px;
-    
+
 }
 
 .mode {
@@ -575,13 +582,13 @@ option {
     gap: 5px;
 }
 
-.front:hover .mode{
+.front:hover .mode {
     color: #A92727;
 }
 
 .front:hover {
     cursor: pointer;
-    box-shadow: 0px 2px 3px 2px rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 2px rgba(26, 24, 29, .12);
 }
 
 .outliner {
@@ -591,38 +598,38 @@ option {
 
 
 .l1 {
-    
+
     width: 16px;
     height: auto;
     transform: translate(0, 10%);
     margin-right: -5px;
-    
+
 }
 
 .l2 {
-    
+
     width: 16px;
     height: auto;
     transform: translate(0, 10%);
     margin-right: -5px;
-    
+
 }
 
 .l3 {
-    
+
     width: 16px;
     height: auto;
     transform: translate(0, 10%);
     margin-right: -5px;
-    
+
 }
 
 .l4 {
-    
+
     width: 16px;
     height: auto;
     transform: translate(0, 10%);
-    
+
 }
 
 .drop {
@@ -635,8 +642,8 @@ option {
     fill: black;
 }
 
-.dropdown{
-    background-color:white;
+.dropdown {
+    background-color: white;
     position: absolute;
     left: 0;
     right: 0;
@@ -647,11 +654,11 @@ option {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 0 rgba(26, 24, 29, .12);
     display: none;
     z-index: 1;
-    
-    
+
+
 }
 
 .choose {
@@ -752,7 +759,7 @@ option {
 .calendar-div {
     height: 30px;
     background-color: white;
-    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 0 rgba(26, 24, 29, .12);
     border-radius: 4px;
     height: 30px;
     display: flex;
@@ -766,7 +773,7 @@ option {
 
 .calendar-div:hover {
     outline: 1px #96919e solid;
-    box-shadow: 0px 2px 5px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 5px 0 rgba(26, 24, 29, .12);
 }
 
 .enclosure {
@@ -793,23 +800,26 @@ option {
 
 
 
-.wrapper{
+.wrapper {
     width: 450px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     position: relative;
-  }
-  .wrapper header{
+}
+
+.wrapper header {
     display: flex;
     align-items: center;
     padding: 25px 30px 10px;
     justify-content: space-between;
-  }
-  header .icons{
+}
+
+header .icons {
     display: flex;
-  }
-  header .icons span{
+}
+
+header .icons span {
     height: 38px;
     width: 38px;
     margin: 0 1px;
@@ -820,54 +830,66 @@ option {
     font-size: 1.9rem;
     user-select: none;
     border-radius: 50%;
-  }
-  .icons span:last-child{
+}
+
+.icons span:last-child {
     margin-right: -10px;
-  }
-  header .icons span:hover{
+}
+
+header .icons span:hover {
     background: #f2f2f2;
-  }
-  header .current-date{
+}
+
+header .current-date {
     font-size: 1.45rem;
     font-weight: 500;
-  }
-  .calendar{
+}
+
+.calendar {
     padding: 20px;
     padding-bottom: 60px;
     position: relative;
-    
-  }
-  .calendar ul{
+
+}
+
+.calendar ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     text-align: center;
-  }
-  .calendar .days{
+}
+
+.calendar .days {
     margin-bottom: 20px;
-  }
-  .calendar li{
+}
+
+.calendar li {
     color: #333;
     width: calc(100% / 7);
     font-size: 1.07rem;
-  }
-  .calendar .weeks li{
+}
+
+.calendar .weeks li {
     font-weight: 500;
     cursor: default;
-  }
-  .calendar .days li{
+}
+
+.calendar .days li {
     z-index: 1;
     cursor: pointer;
     position: relative;
     margin-top: 30px;
-  }
-  .days li.inactive{
+}
+
+.days li.inactive {
     color: #aaa;
-  }
-  .days li.active{
+}
+
+.days li.active {
     color: #fff;
-  }
-  .days li::before{
+}
+
+.days li::before {
     position: absolute;
     content: "";
     left: 50%;
@@ -877,15 +899,17 @@ option {
     z-index: -1;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-  }
-  .days li.active::before{
-    background: #A92727;
-  }
-  .days li:not(.active):hover::before{
-    background: #f2f2f2;
-  }
+}
 
-  .button {
+.days li.active::before {
+    background: #A92727;
+}
+
+.days li:not(.active):hover::before {
+    background: #f2f2f2;
+}
+
+.button {
     position: absolute;
     content: "confirm";
     top: 87%;
@@ -900,16 +924,16 @@ option {
     font-family: 'MyFontSemiBold';
     opacity: 0.8;
     border-radius: 5px;
-    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 0 rgba(26, 24, 29, .12);
     cursor: pointer;
-    transition: box-shadow 0.3s ease ;
-    transition: opacity 0.3s ease ;
+    transition: box-shadow 0.3s ease;
+    transition: opacity 0.3s ease;
     z-index: 1;
-    
-  }
 
-  .button:hover {
-    box-shadow: 0px 5px 9px 0 rgba(26,24,29,.12);
+}
+
+.button:hover {
+    box-shadow: 0px 5px 9px 0 rgba(26, 24, 29, .12);
     opacity: 0.7;
 }
 
@@ -928,7 +952,7 @@ option {
 
 .front2 {
     background-color: white;
-    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 0 rgba(26, 24, 29, .12);
     border-radius: 4px;
     height: max(min-content, 30px);
     padding: 2px 15px;
@@ -939,28 +963,28 @@ option {
     align-items: center;
     color: black;
     margin-bottom: 20px;
-    
+
 }
 
-.front2:hover .mode{
+.front2:hover .mode {
     color: #A92727;
 }
 
 .front2:hover {
     cursor: pointer;
-    box-shadow: 0px 2px 3px 2px rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 2px rgba(26, 24, 29, .12);
 }
 
 .set2 {
     font-size: 1rem;
     color: #5e5c5c;
     height: 25px;
-    margin-top:5px ;
+    margin-top: 5px;
 
 }
 
 .dropdown2 {
-    background-color:white;
+    background-color: white;
     position: absolute;
     left: 0;
     right: 0;
@@ -971,9 +995,9 @@ option {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    box-shadow: 0px 2px 3px 0 rgba(26,24,29,.12);
+    box-shadow: 0px 2px 3px 0 rgba(26, 24, 29, .12);
     z-index: 1;
-    
+
 }
 
 .choose2 {
@@ -1031,20 +1055,20 @@ option {
     margin: 3px;
 }
 
-.inside svg{
+.inside svg {
     width: 13px;
     height: auto;
     fill: rgba(0, 0, 0, 0.432);
     transition: fill 0.3s ease;
 }
 
-.inside:hover svg{
+.inside:hover svg {
     fill: #A92727;
 }
 
 
 
-.inside2 img{
+.inside2 img {
     position: absolute;
     width: 20px;
     height: auto;
@@ -1053,7 +1077,7 @@ option {
     right: -10px;
 }
 
-.inside2:hover img{
+.inside2:hover img {
     fill: #A92727;
 }
 
@@ -1081,7 +1105,7 @@ option {
 }
 
 .tagInput {
-    outline:none;
+    outline: none;
     border: rgba(0, 0, 0, 0.308) 1px solid;
     width: 100%;
     height: 30px;
@@ -1102,14 +1126,14 @@ option {
 }
 
 
-.special{
+.special {
     width: 2px;
     height: auto;
     fill: rgba(0, 0, 0, 0.432);
     transition: fill 0.3s ease;
 }
 
-.special:hover{
+.special:hover {
     fill: #A92727;
 }
 
@@ -1156,7 +1180,7 @@ option {
     position: absolute;
     top: 20vh;
     left: -10vw;
-    transform: translate(-10vh,-10vw);
+    transform: translate(-10vh, -10vw);
     transform: scale(0);
     visibility: hidden;
     z-index: 2;
@@ -1172,7 +1196,7 @@ option {
     outline: 2px solid #A92727;
 }
 
-@media (max-width: 934px){
+@media (max-width: 934px) {
     body {
         width: min-content;
     }
@@ -1210,4 +1234,8 @@ option {
 
 .finished .newSvg {
     visibility: visible;
+}
+
+.opaque {
+    opacity: 0.5;
 }

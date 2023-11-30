@@ -44,10 +44,40 @@ const inside2 = document.querySelectorAll('.inside2');
 let stop = 0;
 const projects = document.querySelector('.projects');
 const left = document.querySelector('.left');
+const morning = document.querySelector('.morning');
+const dayNow = document.querySelector('.day');
+const number = document.querySelector('.number');
+const monthNow = document.querySelector('.month');
 let mySvg = new Image();
 mySvg.src = svg;
 mySvg.classList.add('newSvg');
 
+const now = new Date();
+const currentTime = now.getHours();
+const weekDays = ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'];
+const monthsNames = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'August', 'Sep', 'Oct', 'Nov', 'Dec'];
+let weekDay = weekDays[now.getDay() - 1];
+let currentMonthName = monthsNames[now.getMonth()];
+
+dayNow.textContent = weekDay;
+number.textContent = now.getDay(); 
+monthNow.textContent = currentMonthName;
+
+
+if (currentTime >= 6 && currentTime < 12) {
+    morning.innerHTML = 'Good Morning, Nate <span class="dot">.</span>';
+  } else if (currentTime >= 12 && currentTime < 18) {
+    morning.innerHTML = 'Good Afternoon, Nate <span class="dot">.</span>';
+  } else if (currentTime >= 18 || currentTime < 6) {
+    morning.innerHTML = 'Good Night, Nate <span class="dot">.</span>';
+  }
+
+
+
+const clear = function clearAllOfTheAddParameters() {
+    titleText.value = "";
+    descriptionText.value = ""
+}
 
 add.addEventListener('click', () => {
 
@@ -57,19 +87,24 @@ add.addEventListener('click', () => {
 })
 
 cancel.addEventListener('click', () => {
-
+    clear();
     create.classList.remove("scaled");
     all.classList.remove('colored');
 })
 
 send.addEventListener('click', () => {
-
+    if (send.classList.contains('opaque')){
+        return;
+    }
+    
     create.classList.remove("scaled");
     all.classList.remove('colored');
 })
 
 send2.addEventListener('click', () => {
-
+    if (send2.classList.contains('opaque')){
+        return;
+    }
     create.classList.remove("scaled");
     all.classList.remove('colored');
 })
@@ -256,7 +291,7 @@ const getDifficulty = () => {
     } else if(difficult == "Easy") {
         colorChoice = "#6ad854"
     } else if(difficult == "Medium"){
-        colorChoice = "#fcf159"
+        colorChoice = "#fcb059"
     } else  {
         colorChoice = "#d85454"
     }
@@ -489,6 +524,15 @@ setInterval(() => {
 
 
 
+titleText.addEventListener('input', () => {
+    if(titleText.value == "") {
+        send.classList.add('opaque');
+        send2.classList.add('opaque');
+    } else {
+        send.classList.remove('opaque');
+        send2.classList.remove('opaque');
+    }
+})
 
 
 const allProjects = [];
@@ -501,7 +545,13 @@ let requiredEmpty = true;
 
 
 
+
+
 function addTask() {
+    if (this.classList.contains('opaque')){
+        return
+    }
+
     let newTask = task();
 
     
@@ -523,7 +573,7 @@ function addTask() {
     centerButtonDiv.forEach(item => {
         item.addEventListener('click', closeTask);
     })
-    
+    clear();
 }
 
 container.addEventListener('click', () => {
@@ -544,6 +594,7 @@ document.addEventListener('click', function (event) {
     }
 
 })
+
 
 
 function projectRender() {
