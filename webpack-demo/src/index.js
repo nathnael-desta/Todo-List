@@ -1,4 +1,5 @@
 import './style.css';
+import svg from './Assets/newSvg.svg';
 
 const front = document.querySelector(".front");
 const dropdown = document.querySelector('.dropdown');
@@ -43,7 +44,10 @@ const inside2 = document.querySelectorAll('.inside2');
 let stop = 0;
 const projects = document.querySelector('.projects');
 const left = document.querySelector('.left');
-const centerButton = document.querySelectorAll('.centerButton');
+let mySvg = new Image();
+mySvg.src = svg;
+mySvg.classList.add('newSvg');
+
 
 add.addEventListener('click', () => {
 
@@ -245,12 +249,20 @@ const getDescription = () => {
 
 const getDifficulty = () => {
     let difficult = set.textContent;
+    console.log(difficult);
+    let colorChoice;
     if (difficult == "Trivial") {
-        left.style.backgroundColor = 'yellow'
-
+        colorChoice = "#5471D8"
+    } else if(difficult == "Easy") {
+        colorChoice = "#6ad854"
+    } else if(difficult == "Medium"){
+        colorChoice = "#fcf159"
+    } else  {
+        colorChoice = "#d85454"
     }
     return {
-        difficult
+        difficult,
+        colorChoice
     }
 }
 
@@ -381,6 +393,8 @@ closeSvg.forEach(svg => {
         } else {
             set2.classList.add('hide');
         }
+
+        
     })
 
 
@@ -442,7 +456,7 @@ tagInput.addEventListener('keydown', function (event) {
     }
 
     let inside = document.querySelectorAll('.inside');
-    console.log(inside)
+    
     let count = 0;
         inside.forEach(tag => {
             if (!tag.classList.contains('hide')) {
@@ -485,18 +499,30 @@ send2.addEventListener('click', addTask);
 
 let requiredEmpty = true;
 
+
+
 function addTask() {
     let newTask = task();
 
-    console.log(newTask)
+    
     if (checkIfMade(allProjects, newTask.main)) {
         allProjects[parseInt(checkIfMade(allProjects, newTask.main))].appendChild(makeDetails(newTask));
     } else {
         allProjects.push(makeProject(newTask));
     }
 
+
     projectRender();
 
+    let centerButtonDiv = document.querySelectorAll('.centerButton');
+
+    const closeTask = function closeTaskInsideOfProjectAndProjectIfEmpty() {
+        console.log(this.parentNode.parentNode.classList.add('finished'));
+    }
+    
+    centerButtonDiv.forEach(item => {
+        item.addEventListener('click', closeTask);
+    })
     
 }
 
@@ -512,7 +538,7 @@ document.addEventListener('click', function (event) {
     
 
     if (!front2.contains(target) && !requiredEmpty) {
-    console.log(requiredEmpty)
+    
         dropdown2.classList.add('hide');
         container.classList.remove('outlinerS');
     }
@@ -557,6 +583,7 @@ const makeProject = (task) => {
 
     let left = document.createElement('div');
     left.classList.add('left');
+    left.style.backgroundColor = task.colorChoice;
     item.appendChild(left);
 
     let right = document.createElement('div');
@@ -565,9 +592,12 @@ const makeProject = (task) => {
     
     let centerButton = document.createElement('div');
     centerButton.classList.add('centerButton');
+    
     left.appendChild(centerButton);
 
     // add SVG shit here
+    
+    centerButton.appendChild(mySvg.cloneNode(true));
 
     let todo = document.createElement('div');
     todo.classList.add('todo');
@@ -589,10 +619,10 @@ const makeProject = (task) => {
     due.appendChild(num);
     right.appendChild(due);
 
+    
+
     return project;
 }
-
-
 
 const makeDetails = (task) => {
 
@@ -601,6 +631,7 @@ const makeDetails = (task) => {
 
     let left = document.createElement('div');
     left.classList.add('left');
+    left.style.backgroundColor = task.colorChoice;
     item.appendChild(left);
 
     let right = document.createElement('div');
@@ -609,9 +640,13 @@ const makeDetails = (task) => {
     
     let centerButton = document.createElement('div');
     centerButton.classList.add('centerButton');
+    
     left.appendChild(centerButton);
 
     // add SVG shit here
+
+    
+    centerButton.appendChild(mySvg.cloneNode(true));
 
     let todo = document.createElement('div');
     todo.classList.add('todo');
@@ -663,10 +698,3 @@ let left = document.createElement('div');
     todo.classList.add('todo');
 */
 
-const closeTask = function closeTaskInsideOfProjectAndProjectIfEmpty() {
-    console.log(this.parentNode.parentNode);
-}
-
-centerButton.forEach(item => {
-    item.addEventListener('click', closeTask);
-})
